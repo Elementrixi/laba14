@@ -13,14 +13,14 @@ struct Employee {
 };
 struct Position {
     char posName[30];
-    int amountOfPos;
     char requirements[50];
 };
 struct Company {
-    Employee employeeCand[5];
     int employeeCandAvail;
-    Position position;
+    int amountOfPos;
     char companyName[20];
+    Position position;
+    Employee employeeCand[10];
 };
 int employeeAmount, positionAmount;
 FILE *fp;
@@ -39,11 +39,11 @@ void initProp() {
             cout << "Position\n";
             cin >> companies[positionAmount].position.posName;
             cout << "Amount of positions\n";
-            cin >> companies[positionAmount].position.amountOfPos;
+            cin >> companies[positionAmount].amountOfPos;
             cout << "Requirements\n";
             cin >> companies[positionAmount].position.requirements;
             employeeAmount = 0;
-            int i = companies[positionAmount].position.amountOfPos;
+            int i = companies[positionAmount].amountOfPos;
             do {
                 cout << "Employee candidate last name\n";
                 cin >> companies[employeeAmount].employeeCand[employeeAmount].lastName;
@@ -75,8 +75,8 @@ void outputOfFile() {
             cout << "Company     Position    Amount    Requirements\n";
             cout.setf(ios::left);
             cout << setw(12) << company.companyName << setw(12) << company.position.posName << setw(13)
-                 << company.position.amountOfPos
-                 << setw(12) << company.position.requirements << endl;
+                 << company.amountOfPos
+                 << setw(12) << company.position.requirements << endl << endl;
 
             cout << "Last name      Salary\n";
             for (int i = 0; i < company.employeeCandAvail; ++i) {
